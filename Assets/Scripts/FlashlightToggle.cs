@@ -20,12 +20,12 @@ public class FlashlightToggle : MonoBehaviour {
             if (GameObject.Find("Spotlight").GetComponent<Light>().enabled == false )
             {
                 GameObject.Find("Spotlight").GetComponent<Light>().enabled = true;
-                GameObject.Find("Spotlight").GetComponent<CircleCollider2D>().enabled = true;
+                GameObject.Find("Spotlight").GetComponent<SphereCollider>().enabled = true;
             }
             else
             {
                 GameObject.Find("Spotlight").GetComponent<Light>().enabled = false;
-                GameObject.Find("Spotlight").GetComponent<CircleCollider2D>().enabled = false;
+                GameObject.Find("Spotlight").GetComponent<SphereCollider>().enabled = false;
             }
         }
 	}

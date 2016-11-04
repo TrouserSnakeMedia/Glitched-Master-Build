@@ -4,8 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class SceneHandler : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+
+    private int buttonWidth = 200; //How wide the button is
+    private int buttonHeight = 50; //how tall the button is
+                                   // Use this for initialization
+    void Start () {
 	
 	}
 	
@@ -29,9 +32,21 @@ public class SceneHandler : MonoBehaviour {
         SceneManager.LoadScene("First Level"); //When you press Start Game, this goes to the first level.
     }
 
+    public void Load()
+    {
+        SceneManager.LoadScene("Load"); //Makes a button for loading the game
+      
+
+
+        GameControl.control.Load(); //calls upon the game control script
+        
+      
+    }
+
     public void Credits() //When you press Credits. this goes to the Credits.
     {
         SceneManager.LoadScene("Credits");
         print("Credits work!");
     }
+
 }

@@ -5,6 +5,25 @@ TagManager:
   serializedVersion: 2
   tags:
   - PickUpObject
+  - Enemy
+  - Flashlight
+  - CheckPoint
+  - Box
+  - Battery
+  - Wall
+  - StartingBank
+  - EndBank
+  - Chicken
+  - Grain
+  - Fox
+  - PlayerSpawn
+  - GameManager
+  - Terminal
+  - EnemySprite
+  - Player Model
+  - FeederEnemy
+  - FeederSprite
+  - WaterPatch
   layers:
   - Default
   - TransparentFX
@@ -14,11 +33,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - blocking layer
+  - MainCamera
+  - pushbox
+  - Player
+  - Feeder Enemy
   - 
   - 
   - 
