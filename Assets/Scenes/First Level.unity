@@ -5009,6 +5009,33 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 195000010409672604, guid: 17e43dcf0111b444989c0c01407f8cd7,
+        type: 2}
+      propertyPath: m_StoppingDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 195000010409672604, guid: 17e43dcf0111b444989c0c01407f8cd7,
+        type: 2}
+      propertyPath: m_AutoBraking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011012281130, guid: 17e43dcf0111b444989c0c01407f8cd7,
+        type: 2}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1348496909}
+    - target: {fileID: 4000014237994974, guid: 17e43dcf0111b444989c0c01407f8cd7, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000014237994974, guid: 17e43dcf0111b444989c0c01407f8cd7, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000014237994974, guid: 17e43dcf0111b444989c0c01407f8cd7, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 17e43dcf0111b444989c0c01407f8cd7, type: 2}
   m_IsPrefabParent: 0
@@ -10327,10 +10354,6 @@ Prefab:
       propertyPath: checkpoint
       value: 
       objectReference: {fileID: 1210592033}
-    - target: {fileID: 4000010866221988, guid: 403a4769ce86e47b6aea3ce7f9f28e2d, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -0.039
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 403a4769ce86e47b6aea3ce7f9f28e2d, type: 2}
   m_IsPrefabParent: 0

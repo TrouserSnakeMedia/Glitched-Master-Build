@@ -38,8 +38,8 @@ public class enemyscript : MonoBehaviour {
 	public bool latched;			// the bool stating if the enemy is latched/attacking the player
 	public bool enemyDead;			// bool to tell the manger if the enemy is dead
 	public bool seePlayer;			// bool if flickr sees the player
-
-	public KeyCode shakeKey;        // pick what key we are using for the shake action
+    
+    public KeyCode shakeKey;        // pick what key we are using for the shake action
    // public Animator anim;
 
     private Vector3 previousSighting; // the previous sighting is used in the charge functin as the nav destination and was being used as the point of intrest in the patrol
@@ -77,7 +77,8 @@ public class enemyscript : MonoBehaviour {
 		if (currentLunge >= lunges) 			// if the current lunge counter is greater than or equal to the lunge limit
 			nav.Stop ();						// then stop the nav mesh completely... flickr stops movement all together
 		if (latched == true && enemyDead == false && Input.GetKeyDown (shakeKey)) {   // if the enemy is latched on to the player and the player presses the right mouse button, then the shake counter will increment
-			if (shakeCounter >= shakeLimit) {
+          
+            if (shakeCounter >= shakeLimit) {
 				enemyDead = true;
 			}
 			shakeCounter++;
@@ -104,14 +105,19 @@ public class enemyscript : MonoBehaviour {
 			Patrol ();
 	}
 	public void Latch(){
-     //  anim.SetInteger("FlickerSwitch", 3);
+        //  anim.SetInteger("FlickerSwitch", 3);
+       
         latched = true;
 		nav.speed = 0;
-		transform.parent = enemyLatchPoint.transform;		// parented to the player... this takes away the need for the enemy to try and keep up with the player... it is a more  CPU friendly way
+      
+        transform.parent = enemyLatchPoint.transform;		// parented to the player... this takes away the need for the enemy to try and keep up with the player... it is a more  CPU friendly way
 		transform.position = enemyLatchPoint.position;
-		rb.isKinematic = true; 						// sets the rigidbody to 'animation mode'
-		nav.speed = 0f;								// enemy is already moving with the player so he does not need a speed of his own.. 
-	}
+      
+        rb.isKinematic = true;                      // sets the rigidbody to 'animation mode'
+       
+        nav.speed = 0f;                             // enemy is already moving with the player so he does not need a speed of his own.. 
+        transform.LookAt(target);
+    }
 	public Vector3 dirAngle(float angleInDegrees, bool angleIsGlobal){// creating a function to assist in the field of view.... the angle in degrees is used in the field of view editor. It is used in creating the 'cone' effect that you see in the scene. So it creates the angles in which the enemy can see.
 		if (!angleIsGlobal) {					// if the angle is not global then angles in degreess... we are passing in the view angle
 			angleInDegrees += transform.eulerAngles.y;
