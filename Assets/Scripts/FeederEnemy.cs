@@ -30,10 +30,22 @@ public class FeederEnemy : MonoBehaviour {
 	PlayerFlashlight stunned;
 
 	public bool runOnce;
+   public bool attackAnimationCheck;
+  public  bool walkAnimationCheck;
+   public bool idleAnimationCheck;
 
-	NavMeshAgent nav;
-	// Use this for initialization
-	void Start () {
+    NavMeshAgent nav;
+
+    //public Animator anim; //creates a empty animator called anim thats public  so it can be set in the unity inspector 
+
+
+    //void Awake()
+    //{
+    //    anim = gameObject.GetComponent<Animator>(); // finds and sets the animator named anim to equal animator that is attached to this gameobject this script is attached to
+
+
+    //}  // Use this for initialization
+    void Start () {
 		runOnce = false;
 		stunned = GameObject.FindGameObjectWithTag ("Flashlight").GetComponent<PlayerFlashlight> ();
 		nav = GetComponent<NavMeshAgent> ();
@@ -66,8 +78,12 @@ public class FeederEnemy : MonoBehaviour {
 	}
 	IEnumerator Attack(){	// the attack will have an animation to handle most of it.
 		if (stunned.stunFeeder == false) {
-			print ("attacking");	// right now there is only a print happening
-			yield return new WaitForSeconds (delayBetweenAttack);
+            //	print ("attacking");    // right now there is only a print happening
+            //  anim.SetInteger("FeederSwitch", 4); 
+            walkAnimationCheck = false;
+            idleAnimationCheck = false;
+            attackAnimationCheck = true;
+            yield return new WaitForSeconds (delayBetweenAttack);
 		} else if (runOnce == false && stunned.stunFeeder == true) {
 			state = FeederEnemy.State.STUNNED;			
 		}								// I will be putting in another raycast and if frank is within that range, then frank will take damage... The attack range should be slightly farther than the attack distance
@@ -75,8 +91,12 @@ public class FeederEnemy : MonoBehaviour {
 	}
 	void Patrol(){		// the feeder enemy will only have the feeding animation playing during its "patrol"
 		if (stunned.stunFeeder == false) {
-			print ("Patrol");	// when there is placement of the dead enegineer then we will set the feeder to look at that object
-			nav.speed = patrolSpeed;// but for now, the feeder enemy is just sitting there
+			print ("Patrol");   // when there is placement of the dead enegineer then we will set the feeder to look at that object
+            walkAnimationCheck = false;
+            idleAnimationCheck = true;
+            attackAnimationCheck = false;
+            //  anim.SetInteger("FeederSwitch", 2);
+            nav.speed = patrolSpeed;// but for now, the feeder enemy is just sitting there
 		} else if(runOnce == false && stunned.stunFeeder == true){
 			state = FeederEnemy.State.STUNNED;
 		}
@@ -84,7 +104,11 @@ public class FeederEnemy : MonoBehaviour {
 	void Chase(){// the chase is on!
 		if (stunned.stunFeeder == false) {
 			print ("chase");
-			RaycastHit hit;		// gonna be using a raycast soon....
+            walkAnimationCheck = true;
+            idleAnimationCheck = false;
+            attackAnimationCheck = false;
+            // anim.SetInteger("FeederSwitch", 3);
+            RaycastHit hit;		// gonna be using a raycast soon....
 			nav.speed = chaseSpeed;// setting the speed
 			nav.destination = player.transform.position; // the nav dest is the specified player position
 			if (Physics.Raycast (transform.position, transform.forward, out hit, attackDistance)) { // the feeder enemy will be raycasting and if frank is less than the attack distance away, the feeder enemy should go into attack mode
